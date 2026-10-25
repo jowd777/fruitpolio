@@ -1,6 +1,6 @@
 # Read
 
-## Jhon Emilson | BSIT Portfolio
+## Jude Tolorio | BSIT Portfolio
 
 This project is a single-page portfolio website for Jhon Emilson, built as a modern personal landing page for a Bachelor of Science in Information Technology profile.
 
@@ -61,7 +61,7 @@ The portfolio includes sections for:
 
 ## Contact details included in the site
 
-- Email: emilsonbero@gmail.com
+- Email: jowdddd777@gmail.com
 - Location: Metro Manila, Philippines
 
 ## Notes
