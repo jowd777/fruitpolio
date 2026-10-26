@@ -468,10 +468,17 @@
     }
 
     .certificate-card {
+      display: block;
       overflow: hidden;
+      width: 100%;
+      padding: 0;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--surface);
+      color: inherit;
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -486,6 +493,39 @@
       height: 220px;
       object-fit: cover;
       background: #200c0c;
+    }
+
+    .certificate-dialog {
+      position: fixed;
+      max-width: min(92vw, 1100px);
+      max-height: 92vh;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .certificate-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.82);
+    }
+
+    .certificate-dialog img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(92vh - 64px);
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .certificate-dialog-close {
+      display: block;
+      margin: 0 0 8px auto;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
     }
 
     .project-meta {
@@ -1072,10 +1112,10 @@
               <img src="assets/edupedia.png" alt="Screenshot of the EduPedia Datamex College of Saint Adeline campus article">
             </div>
             <div class="project-meta"><span>Website</span><span>2025</span></div>
-            <h3>EduPedia</h3>
-            <p>An EduPedia institution profile for Datamex College of Saint Adeline – Parañaque Campus, with campus history, academic programs, and institutional details.</p>
+            <h3>Blossom Boutique</h3>
+            <p>A flower boutique project concept for browsing arrangements, managing product listings, handling orders, and presenting a clean shop experience.</p>
             <div class="project-actions">
-              <a href="https://emilsonbero-jpg.github.io/DCSA-wiki/" target="_blank" rel="noreferrer" class="text-link">Wikipedia <i class="bi bi-arrow-up-right"></i></a>
+              <a href="https://blossomboutique.free.je/" target="_blank" rel="noreferrer" class="text-link">E-commerce <i class="bi bi-arrow-up-right"></i></a>
             </div>
           </article>
 
@@ -1106,7 +1146,7 @@
       </div>
     </section>
 
-    <section class="section" id="certificates">
+ <section class="section" id="certificates">
       <div class="container">
         <div class="section-head">
           <span class="section-index">03.5 / 10</span>
@@ -1115,22 +1155,29 @@
         </div>
 
         <div class="certificate-grid">
-          <div class="certificate-card">
+          <button class="certificate-card certificate-trigger" type="button" data-image="assets/bero%20cert/467ba97d-12fc-4147-ba7f-6e2259c6ba2d.jpg" data-alt="Certificate 1" aria-label="Expand certificate 1 for clearer reading">
             <img src="assets/bero%20cert/467ba97d-12fc-4147-ba7f-6e2259c6ba2d.jpg" alt="Certificate 1">
-          </div>
-          <div class="certificate-card">
+          </button>
+          <button class="certificate-card certificate-trigger" type="button" data-image="assets/bero%20cert/85c5e575-04fa-4767-9590-bcfdbe7bb55d.jpg" data-alt="Certificate 2" aria-label="Expand certificate 2 for clearer reading">
             <img src="assets/bero%20cert/85c5e575-04fa-4767-9590-bcfdbe7bb55d.jpg" alt="Certificate 2">
-          </div>
-          <div class="certificate-card">
+          </button>
+          <button class="certificate-card certificate-trigger" type="button" data-image="assets/bero%20cert/876a5346-0163-4fb9-98c4-7cc8618b7e89.jpg" data-alt="Certificate 3" aria-label="Expand certificate 3 for clearer reading">
             <img src="assets/bero%20cert/876a5346-0163-4fb9-98c4-7cc8618b7e89.jpg" alt="Certificate 3">
-          </div>
-          <div class="certificate-card">
+          </button>
+          <button class="certificate-card certificate-trigger" type="button" data-image="assets/bero%20cert/a531843e-d926-41c0-be97-8aeea2670228.jpg" data-alt="Certificate 4" aria-label="Expand certificate 4 for clearer reading">
             <img src="assets/bero%20cert/a531843e-d926-41c0-be97-8aeea2670228.jpg" alt="Certificate 4">
-          </div>
-          <div class="certificate-card">
+          </button>
+          <button class="certificate-card certificate-trigger" type="button" data-image="assets/bero%20cert/b881725a-d244-44e0-9cc5-028c2f0db496.jpg" data-alt="Certificate 5" aria-label="Expand certificate 5 for clearer reading">
             <img src="assets/bero%20cert/b881725a-d244-44e0-9cc5-028c2f0db496.jpg" alt="Certificate 5">
-          </div>
+          </button>
         </div>
+
+        <dialog class="certificate-dialog" aria-label="Certificate preview">
+          <form method="dialog">
+            <button class="certificate-dialog-close" aria-label="Close certificate preview">Close</button>
+          </form>
+          <img alt="">
+        </dialog>
       </div>
     </section>
 
@@ -1472,6 +1519,23 @@ db.execute(query, [email, passwordHash]);</code></pre>
     }
 
     setTimeout(typeRole, 1800);
+
+    const certificateDialog = document.querySelector('.certificate-dialog');
+    const certificatePreview = certificateDialog.querySelector('img');
+
+    document.querySelectorAll('.certificate-trigger').forEach((button) => {
+      button.addEventListener('click', () => {
+        certificatePreview.src = button.dataset.image;
+        certificatePreview.alt = button.dataset.alt;
+        certificateDialog.showModal();
+      });
+    });
+
+    certificateDialog.addEventListener('click', (event) => {
+      if (event.target === certificateDialog) {
+        certificateDialog.close();
+      }
+    });
 
     document.getElementById('contact-form').addEventListener('submit', (event) => {
       event.preventDefault();
