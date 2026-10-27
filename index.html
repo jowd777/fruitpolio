@@ -768,6 +768,33 @@
       margin-top: 22px;
     }
 
+    .interview-card {
+      margin-top: 24px;
+      padding: 20px 18px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .interview-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .interview-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .interview-card video {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #000;
+    }
+
     .career-plan {
       border: 1px solid var(--line);
       background: var(--surface);
@@ -936,6 +963,9 @@
 
     @media (max-width: 640px) {
       .nav-links { display: none; }
+      .nav-wrap { gap: 8px; }
+      .header-actions { gap: 4px; }
+      .header-actions .icon-button { display: none; }
       .project-grid, .certificate-grid, .skills-layout, .reflection-callout, .field-row { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
       .case-content { grid-template-columns: 1fr; padding-left: 22px; }
@@ -959,6 +989,7 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#certificates">Certificates</a></li>
           <li><a href="#cases">Cases</a></li>
+          <li><a href="#resume">Resume</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -1112,10 +1143,10 @@
               <img src="assets/edupedia.png" alt="Screenshot of the EduPedia Datamex College of Saint Adeline campus article">
             </div>
             <div class="project-meta"><span>Website</span><span>2025</span></div>
-            <h3>Blossom Boutique</h3>
-            <p>A flower boutique project concept for browsing arrangements, managing product listings, handling orders, and presenting a clean shop experience.</p>
+            <h3>EduTrack</h3>
+            <p>The institution’s development, as outlined in this profile, spans vocational computer training programs.</p>
             <div class="project-actions">
-              <a href="https://blossomboutique.free.je/" target="_blank" rel="noreferrer" class="text-link">E-commerce <i class="bi bi-arrow-up-right"></i></a>
+              <a href="https://edutrck.xo.je/login.php" target="_blank" rel="noreferrer" class="text-link">Website <i class="bi bi-arrow-up-right"></i></a>
             </div>
           </article>
 
@@ -1358,7 +1389,7 @@ db.execute(query, [email, passwordHash]);</code></pre>
         </div>
 
         <div class="career-grid">
-          <div>
+          <div id="resume">
             <div class="timeline" data-reveal>
               <div class="timeline-item">
                 <span class="mono">Education</span>
@@ -1378,6 +1409,15 @@ db.execute(query, [email, passwordHash]);</code></pre>
             </div>
 
             <a class="button-secondary resume-launch" href="assets/Documents/resume.pdf" target="_blank" rel="noopener noreferrer">View résumé</a>
+
+            <div class="interview-card" id="employability" data-reveal>
+              <h3>Mock interview</h3>
+              <p>Watch my mock interview and hear how I present my skills and career goals.</p>
+              <video controls preload="metadata" playsinline aria-label="Mock interview video">
+                <source src="assets/video/jude.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+            </div>
           </div>
 
           <div class="career-plan" data-reveal>
